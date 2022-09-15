@@ -2,11 +2,12 @@ package me.dasyad.rickandmortyandroid.rest
 
 import me.dasyad.rickandmortyandroid.model.Character
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface CharacterApiClient {
     @GET("character")
-    suspend fun getAllCharacters(): CharacterList
+    suspend fun getAllCharacters(@Query("page") page: Int = 1): CharacterList
 }
 
 /**
@@ -20,6 +21,6 @@ data class CharacterList(
 data class CharacterListInfo(
     val count: Int,
     val pages: Int,
-    val next: String,
+    val next: String?,
     val prev: String?,
 )
