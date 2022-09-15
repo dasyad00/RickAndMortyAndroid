@@ -69,6 +69,8 @@ class CharacterListFragment : Fragment() {
 
     private fun setLoading(state: Boolean) {
         this.isLoading = state
-        adapter.setLoading(state)
+        binding.characterList.post {
+            adapter.setLoading(state)
+        }
     }
 }
