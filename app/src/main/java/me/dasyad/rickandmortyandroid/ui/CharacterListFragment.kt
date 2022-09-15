@@ -31,6 +31,10 @@ class CharacterListFragment : Fragment() {
             binding.loadingCircle.visibility = View.GONE
         }
 
+        viewModel.imageBitmaps.observe(viewLifecycleOwner) {
+            adapter.setImageBitmaps(it)
+        }
+
         lifecycleScope.launch {
             viewModel.init()
         }

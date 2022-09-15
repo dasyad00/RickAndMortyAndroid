@@ -1,5 +1,6 @@
 package me.dasyad.rickandmortyandroid.service
 
+import android.graphics.Bitmap
 import me.dasyad.rickandmortyandroid.model.Character
 import me.dasyad.rickandmortyandroid.rest.CharacterApiClient
 
@@ -14,4 +15,7 @@ class CharacterServiceImpl(
         }
         return list
     }
+
+    override suspend fun getImageBitmap(url: String): Bitmap =
+        characterApiClient.getImageBitmap(url)
 }

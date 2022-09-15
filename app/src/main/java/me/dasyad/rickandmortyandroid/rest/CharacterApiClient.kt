@@ -1,13 +1,18 @@
 package me.dasyad.rickandmortyandroid.rest
 
+import android.graphics.Bitmap
 import me.dasyad.rickandmortyandroid.model.Character
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 
 interface CharacterApiClient {
     @GET("character")
     suspend fun getAllCharacters(@Query("page") page: Int = 1): CharacterList
+
+    @GET
+    suspend fun getImageBitmap(@Url url: String): Bitmap
 }
 
 /**

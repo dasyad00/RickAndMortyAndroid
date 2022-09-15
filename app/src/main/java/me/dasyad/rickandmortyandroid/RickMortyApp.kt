@@ -3,6 +3,7 @@ package me.dasyad.rickandmortyandroid
 import android.app.Application
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import me.dasyad.rickandmortyandroid.rest.BitmapConverterFactory
 import me.dasyad.rickandmortyandroid.rest.CharacterApiClient
 import me.dasyad.rickandmortyandroid.service.CharacterService
 import me.dasyad.rickandmortyandroid.service.CharacterServiceImpl
@@ -43,6 +44,7 @@ class RickMortyApp : Application() {
 
     private fun createRetrofit(moshi: Moshi): Retrofit = Retrofit.Builder()
         .baseUrl(Config.BASE_URL)
+        .addConverterFactory(BitmapConverterFactory())
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 }
