@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.dasyad.rickandmortyandroid.databinding.CharacterViewBinding
 import me.dasyad.rickandmortyandroid.model.Character
 
-class CharacterListAdapter(
-
-) : RecyclerView.Adapter<CharacterViewHolder>() {
+class CharacterListAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
     private var characters: List<Character> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,6 +23,10 @@ class CharacterListAdapter(
     fun setCharacters(characters: List<Character>) {
         this.characters = characters
         this.notifyDataSetChanged()
+    }
+
+    fun updateCharacter(index: Int) {
+        this.notifyItemChanged(index)
     }
 }
 
