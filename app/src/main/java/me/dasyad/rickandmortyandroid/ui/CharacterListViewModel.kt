@@ -46,11 +46,10 @@ class CharacterListViewModel(
 
         mutexBitmaps.lock()
         val bitmaps = this.imageBitmaps.value!!.toMutableList()
-        val newBitmaps = nextList.map { character ->
-            this.getImageBitmap(character.image)
+        for (character in nextList) {
+            bitmaps.add(this.getImageBitmap(character.image))
+            mImageBitmaps.value = bitmaps.toList()
         }
-        bitmaps.addAll(newBitmaps)
-        mImageBitmaps.value = bitmaps
         mutexBitmaps.unlock()
 
     }
