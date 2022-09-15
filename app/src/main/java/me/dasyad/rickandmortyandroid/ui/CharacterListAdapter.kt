@@ -77,7 +77,7 @@ class CharacterViewHolder(
     private val binding: CharacterViewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(character: Character, image: Bitmap?) {
-        binding.name.text = "${character.id}: ${character.name}"
+        binding.name.text = character.name
         if (image == null) {
             binding.imagePlaceholder.visibility = View.VISIBLE
             binding.image.visibility = View.INVISIBLE
