@@ -45,9 +45,10 @@ class CharacterListFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = binding.characterList.layoutManager as LinearLayoutManager
+                if (!viewModel.hasMore()) return
                 if (isLoading) return
                 if (
-                    layoutManager.findLastCompletelyVisibleItemPosition() ==
+                    layoutManager.findLastCompletelyVisibleItemPosition() >=
                     viewModel.characters.value!!.size - LOAD_MORE_BUFFER
                 ) {
                     setLoading(true)

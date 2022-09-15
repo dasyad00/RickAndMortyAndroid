@@ -20,6 +20,8 @@ class CharacterListViewModel(
     private val mImageBitmaps: MutableLiveData<List<Bitmap>> = MutableLiveData((listOf()))
     val imageBitmaps = mImageBitmaps
 
+    fun hasMore() = lastPageIndex <= maxPages
+
     suspend fun init() {
         val characterList = characterApiClient.getAllCharacters(lastPageIndex)
         this.maxPages = characterList.info.pages
@@ -27,7 +29,7 @@ class CharacterListViewModel(
     }
 
     suspend fun loadMoreCharacters() {
-        if (lastPageIndex > maxPages) {
+        if (!hasMore()) {
             return
         }
 
