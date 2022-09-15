@@ -5,8 +5,6 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import me.dasyad.rickandmortyandroid.rest.BitmapConverterFactory
 import me.dasyad.rickandmortyandroid.rest.CharacterApiClient
-import me.dasyad.rickandmortyandroid.service.CharacterService
-import me.dasyad.rickandmortyandroid.service.CharacterServiceImpl
 import me.dasyad.rickandmortyandroid.ui.CharacterListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -23,8 +21,6 @@ class RickMortyApp : Application() {
 
     private val appModules = module {
         factory<CharacterApiClient> { retrofit.create() }
-
-        single<CharacterService> { CharacterServiceImpl(get()) }
 
         viewModel { CharacterListViewModel(get()) }
     }
